@@ -26,7 +26,7 @@ public class DeserializerIT {
         myRecord.setName("Justin Grant");
         myRecord.setPhone("313-212-1122");
 
-        TestRecord outputRecord = deserializer.deserialize(jsonIn, TestRecord.class);
+        TestRecord outputRecord = deserializer.deserialize(jsonIn, TestRecord.class, TestRecord.class);
 
         assertEquals(myRecord, outputRecord);
     }
@@ -38,7 +38,7 @@ public class DeserializerIT {
                 .withPhone("313-212-1122")
                 .build();
 
-        TestRecordWithBuilder outputRecord = deserializer.deserialize(jsonIn, TestRecordWithBuilder.class);
+        TestRecordWithBuilder outputRecord = deserializer.deserialize(jsonIn, TestRecordWithBuilder.Builder.class, TestRecordWithBuilder.class);
 
         assertEquals(myRecord, outputRecord);
     }

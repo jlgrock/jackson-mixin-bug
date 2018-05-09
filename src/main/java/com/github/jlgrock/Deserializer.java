@@ -17,11 +17,12 @@ public class Deserializer {
     }
 
     protected <O> O deserialize(final String input,
+                                 final Class<?> readerClass,
                                  final Class<O> outputClass) throws IOException {
         O returnVal = null;
         if (input != null) {
             ObjectReader objectReader;
-            objectReader = mapper.addMixIn(outputClass, VersionReadMixin.class).readerFor(outputClass);
+            objectReader = mapper.addMixIn(readerClass, VersionReadMixin.class).readerFor(outputClass);
             returnVal = objectReader.readValue(input);
         }
         return returnVal;
